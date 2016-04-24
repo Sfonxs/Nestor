@@ -1,0 +1,20 @@
+program: statement (statement)* EOF
+
+statement: (declaration | assignment | method_call | return | method) statement_end
+declaration: declaration_keyword identifier
+assignment: assignment_begin_keyword identifier assignment_end_keyword expression
+method_call: method_call_begin identifier (method_call_end expression (argument_seperator expression)* arguments_end| nothing)
+
+return: action_return expression
+
+method: action_create_begin identifier (action_arguments identifier (argument_seperator identifier)* | nothing) statement_end method_body method_end
+method_body: (statement)*
+
+expression: term ((PLUS | MIN) term)*
+term: value ((DIV | MULT) value)*
+
+value: identifier | number | OPEN_PAR expression CLOSE_PAR | method_call
+
+identifier: WORD
+statement_end: DOT
+number: DOUBLE

@@ -1,6 +1,6 @@
 # Nestor
 A sentence based programming language.
-This project is not finished and currently still being developed.
+This project is not completely finished.
 
 Some example code for the current version 0.0.1:
 ```
